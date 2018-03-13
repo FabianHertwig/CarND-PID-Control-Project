@@ -17,13 +17,13 @@ void PID::Init(double Kp, double Ki, double Kd) {
 
 void PID::UpdateError(double cte) {
 
-    PID::d_error = PID::p_error - cte;
+    PID::d_error = cte - PID::p_error;
     PID::p_error = cte;
     PID::i_error += cte;
 
 }
 
 double PID::TotalError() {
-    return PID::Kp * PID::p_error - PID::Ki * PID::i_error - PID::Kd * PID::d_error;
+    return - PID::Kp * PID::p_error - PID::Ki * PID::i_error - PID::Kd * PID::d_error;
 }
 

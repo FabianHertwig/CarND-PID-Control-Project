@@ -33,9 +33,9 @@ std::string hasData(std::string s) {
 int main() {
     uWS::Hub h;
 
-    double params[] = {0.28, 0.0001, 5.0};
+    double params[] = {0.2, 0.001, 10.0};
     //set the first parameter to true to optimize the p,i,d values with Twiddle.
-    Twiddle twiddle(false, 2000, 0.2, params);
+    Twiddle twiddle(false, 500, 0.2, params);
 
     h.onMessage([&twiddle](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
         // "42" at the start of the message means there's a websocket message event.
@@ -59,7 +59,7 @@ int main() {
                         std::string msg = "42[\"reset\",{}]";
                         ws.send(msg.data(), msg.length(), uWS::OpCode::TEXT);
                     } else {
-                        steer_value = -twiddle.totalError();
+                        steer_value = twiddle.totalError();
 
                         if(steer_value < -1.0) {
                             steer_value = -1.0;

@@ -15,8 +15,8 @@ Twiddle::Twiddle(bool do_optimize, int iteration_run_length, double threshold, d
         Twiddle::params[i] = params[i];
     }
 
-    for (int i = 0; i < 3; i++) {
-        Twiddle::delta_params[i] = params[i] / 10.0;
+    for (double &delta_param : Twiddle::delta_params) {
+        delta_param = 1.0;
     }
 
     param_to_tweak = 0;

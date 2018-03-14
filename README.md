@@ -3,6 +3,10 @@ Self-Driving Car Engineer Nanodegree Program
 
 ---
 
+## Reflection
+
+For a reflection on what the P, I and D gain values do and how I found good values, please take a look at [this file](./Reflection.md).
+
 ## Dependencies
 
 * cmake >= 3.5
